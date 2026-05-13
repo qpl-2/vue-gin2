@@ -12,11 +12,13 @@ type Config struct {
 		Port string
 	}
 	Database struct {
-		Host     string
-		Port     string
-		User     string
-		Password string
-		Name     string
+		Host         string
+		Port         string
+		User         string
+		Password     string
+		Name         string
+		MaxTdleConns int
+		MaxOpenConns int
 	}
 }
 
@@ -38,4 +40,6 @@ func InitConfig() {
 	if err != nil {
 		log.Fatalf("Unable to decode into struct, %v", err)
 	}
+
+	initDB()
 }
